@@ -38,15 +38,13 @@ def get_flights(date, depart_day, weather_type):
 
         if weather_json['daily'][depart_day-1]['weather'][0]['main'] == weather_type:
             clear_weather.append(j)
+    # for l in res:
+    #     if l['destination']['code'] in clear_weather and l['origin']['code'] == "DFW":
+    #         return_list.append(l['flightNumber'])
     for l in res:
         if l['destination']['code'] in clear_weather and l['origin']['code'] == "DFW":
-            return_list.append(l['flightNumber'])
-        # for l in res:
-        #     if l['destination']['code'] in clear_weather and l['origin']['code'] == "DFW":
-        #         return_list.append(l)
-        # return_list = list(set(return_list))
-        # return json.dumps(return_list)
-    return_value['Recommand_list'] = list(set(return_list))[0:5]
+            return_list.append(l)
+    return_value['Recommand_list'] = return_list[0:5]
     return return_value
 
 
